@@ -10,6 +10,7 @@ def analyze_sales(filename):
     reader.fieldnames = [name.strip() for name in reader.fieldnames]
 
         for row in reader:
+            row = {key.strip(): value.strip() for key, value in row.items()}
             product = row["product"]
             quantity = int(row["quantity"])
             price = float(row["unit_price"])
