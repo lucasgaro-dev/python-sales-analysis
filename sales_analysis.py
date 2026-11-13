@@ -1,3 +1,4 @@
+
 import csv
 
 def analyze_sales(filename):
@@ -6,17 +7,19 @@ def analyze_sales(filename):
     product_sales = {}
 
     with open(filename, "r", newline="", encoding="utf-8-sig") as file:
-    reader = csv.DictReader(file)
-    reader.fieldnames = [name.strip() for name in reader.fieldnames]
+        reader = csv.DictReader(file)
 
         for row in reader:
-            row = {key.strip(): value.strip() for key, value in row.items()}
+            row = {
+                key.strip(): value.strip()
+                for key, value in row.items()
+            }
+
             product = row["product"]
             quantity = int(row["quantity"])
             price = float(row["unit_price"])
 
             revenue = quantity * price
-
             total_revenue += revenue
             total_units += quantity
 
@@ -37,3 +40,4 @@ def analyze_sales(filename):
 
 if __name__ == "__main__":
     analyze_sales("data/sales.csv")
+
