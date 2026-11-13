@@ -5,8 +5,9 @@ def analyze_sales(filename):
     total_units = 0
     product_sales = {}
 
-    with open(filename, "r", newline="", encoding="utf-8") as file:
-        reader = csv.DictReader(file)
+    with open(filename, "r", newline="", encoding="utf-8-sig") as file:
+    reader = csv.DictReader(file)
+    reader.fieldnames = [name.strip() for name in reader.fieldnames]
 
         for row in reader:
             product = row["product"]
