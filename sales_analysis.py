@@ -11,9 +11,10 @@ def analyze_sales(filename):
 
         for row in reader:
             row = {
-                key.strip(): value.strip()
-                for key, value in row.items()
-            }
+    key.strip(): value.strip()
+    for key, value in row.items()
+    if key is not None and value is not None
+}
 
             product = row["product"]
             quantity = int(row["quantity"])
